@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide show</title>
+    <style>
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+            background-color: whitesmoke;
+            text-align: center;
+            padding: 20px;
+        }
+
+        button {
+            font-size: 32px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .controller {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="" alt="" id="image_preview">
+        <div class="controller">
+                <button onclick="handleFirst()">First</button>
+                <button onclick="handlePre()">Pre</button>
+                <button onclick="handleNext()">Next</button>
+                <button onclick="handleLast()">Last</button>
+                <button onclick="handlePlay()">Play</button>
+                <button onclick="handlePause()">Pause</button>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            'https://via.placeholder.com/600x400?text=Image+1',
+            'https://via.placeholder.com/600x400?text=Image+2',
+            'https://via.placeholder.com/600x400?text=Image+3',
+            'https://via.placeholder.com/600x400?text=Image+4',
+            'https://via.placeholder.com/600x400?text=Image+5'
+        ]
+        let postion = 0
+        let isAutoRun = false
+        const imagePreviewElement = document.getElementById('image_preview')
+
+        function handleNext() {
+            postion = postion + 1
+            hienThiAnhHienTaiTheoPosition()
+        }
+
+        function handlePre() {
+            postion = postion - 1
+            hienThiAnhHienTaiTheoPosition()
+        }
+
+        function handleFirst() {
+            postion = 0
+            hienThiAnhHienTaiTheoPosition()
+        }
+
+        function handleLast() {
+            postion = images.length - 1
+            hienThiAnhHienTaiTheoPosition()
+        }
+
+        function handlePlay() {
+            isAutoRun = true
+        }
+
+        function handlePause() {
+            isAutoRun = false
+        }
+
+        function hienThiAnhHienTaiTheoPosition() {
+            if(postion === images.length ) {
+                postion = 0
+            }
+
+            if(postion === -1) {
+                postion = images.length - 1
+            }
+
+            imagePreviewElement.src = images[postion]
+        }
+        hienThiAnhHienTaiTheoPosition()
+
+        setInterval(function(){
+           if(isAutoRun) {
+            handleNext()
+           }
+        }, 1000)
+    </script>
+</body>
+</html>

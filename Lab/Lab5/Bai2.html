@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Danh muc hang hoa</h3>
+    <table border="1">
+      <tr>
+        <td>iPhone9</td>
+        <td>2700$</td>
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>Samsung Galaxy S9</td>
+        <td>1500$</td>
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>Nokia1234</td>
+        <td>1200$</td>
+        <td><button>Add</button></td>
+      </tr>
+      <tr>
+        <td>Sony Xperia</td>
+        <td>1700$</td>
+        <td><button onclick="them()">Add</button></td>
+      </tr>
+    </table>
+    <h3>Gio hang cua ban</h3>
+    <table id="cart" border="1"></table>
+    <h3>
+      Tong so tien: $
+      <span id="total">0</span>
+    </h3>
+
+    <script>
+        function them(){
+            var row = button.parentElement.parentElement.cloneNode(true);
+            var btnXoa = row.getElementsByTagName("button")[0];
+            btnXoa.innerText = "Xoa";
+            btnXoa.setAttribute("onclick", "xoa(this)");
+            document.getElementById("cart").appendChild(row);
+            tinhTong();
+        };
+        function xoa(){
+            var row = button.parentElement.parentElement.cloneNode(true);
+            document.getElementById("cart").removeChild(row);
+            tinhTong();
+        }
+        function tinhTong(){
+            var cart = document.getElementById("cart");
+            var row = cart.getElementsByTagName("tr");
+            var tong = 0;
+            for (let i = 0;i<row.length;i++){
+                var cells = rows[i].getElementsByTagName("td");
+                var price = cells[1].innerText.substr(1);
+                tong += 1*price;
+            }
+        }
+        document.getElementById("total").innerText = tong;
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

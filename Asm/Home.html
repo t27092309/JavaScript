@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Home.css" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div class="menu">
+          <a href="#">iPhone</a>
+          <a href="#">Mac</a>
+          <a href="#">iPad</a>
+          <a href="#">Watch</a>
+          <a href="#">Tai nghe, Loa</a>
+          <a href="#">Phụ kiện</a>
+          <a href="#">TekZone</a>
+          <a href="#">TopCare</a>
+          <form action="">
+            <input type="search" placeholder="Search" />
+          </form>
+        </div>
+        <div class="slideshow-container">
+          <div class="slideimg">
+            <img src="IMG/mainmenu1.webp" alt="" style="width: 100%" />
+          </div>
+          <div class="slideimg">
+            <img src="IMG/mainmenu2.webp" alt="" style="width: 100%" />
+          </div>
+          <div class="slideimg">
+            <img src="IMG/mainmenu3.webp" alt="" style="width: 100%" />
+          </div>
+          <div class="slideimg">
+            <img src="IMG/mainmenu4.webp" alt="" style="width: 100%" />
+          </div>
+          <div class="slideimg">
+            <img src="IMG/mainmenu5.webp" alt="" style="width: 100%" />
+          </div>
+          <!--Next previous button-->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br />
+        <!--Dots/circles-->
+        <div style="text-align: center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+      </header>
+      <article>
+        <h2>iPhone</h2>
+        <div class="IphoneProduct">
+            <div class="product">
+                <div class="sp">
+                    <img src="IMG/iphone-15-pro-max-blue-1-650x650.webp" alt="">
+                    <div class="productInfo">
+                        <p class="productName">iPhone 15 Pro Max 256 GB</p>
+                        <p class="productPrice">30.990.000₫ <del>34.990.000₫</del> -11%</p>
+                    </div>
+                </div>
+                <div class="sp">
+                    <img src="IMG/iphone-15-pro-blue-1-650x650.webp" alt="">
+                    <div class="productInfo">
+                        <p class="productName">iPhone 15 Pro 128 GB</p>
+                        <p class="productPrice">30.990.000₫ <del>34.990.000₫</del> -11%</p>
+                    </div>
+                </div>
+                <div class="sp">
+                    <img src="IMG/iphone-15-plus-green-1-650x650.webp" alt="">
+                    <div class="productInfo">
+                        <p class="productName">iPhone 15 Plus 128 GB</p>
+                        <p class="productPrice">30.990.000₫ <del>34.990.000₫</del> -11%</p>
+                    </div>
+                </div>
+                <div class="sp">
+                    <img src="IMG/iphone-15-plus-green-1-650x650.webp" alt="">
+                    <div class="productInfo">
+                        <p class="productName">iPhone 15 128 GB</p>
+                        <p class="productPrice">30.990.000₫ <del>34.990.000₫</del> -11%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </article>
+      <footer>
+        <div class="column">
+            <div class="column1">
+                <h3>Tổng đài</h3>
+                <p>Mua hàng: <a href="#">1900.9696.42</a> (7:30 - 22:00)</p>
+                <p>Khiếu nại: <a href="#">1900.9696.43</a> (8:00 - 21:30)</p>
+            </div>
+            <div class="column1">
+                <h3>Hệ thống cửa hàng</h3>
+                <p>Xem 97 cửa hàng</p>
+                <p>Nội quy cửa hàng</p>
+                <p>Chất lượng phục vụ</p>
+                <p>Chính sách bảo hành & đổi trả</p>
+            </div>
+            <div class="column1">
+                <h3>Điều kiện giao dịch chung</h3>
+                <p>Hướng dẫn mua hàng online</p>
+                <p>Chính sách giao hàng</p>
+                <p>Hướng dẫn thanh toán</p>
+            </div>
+            <div class="column1">
+                <h3>Về thương hiệu TopZone</h3>
+                <p>Tích điểm Quà tặng VIP</p>
+                <p>Giới thiệu TopZone</p>
+                <p>Bán hàng doanh nghiệp</p>
+                <p>Chính sách xử lý dữ liệu cá nhân</p>
+                <p>Xem bản mobile</p>
+            </div>
+            <div class="column1">
+                <h3>Trung tâm bảo hành TopCare</h3>
+                <p>Giới thiệu TopCare</p>
+            </div>
+
+            <script>
+              let slideIndex = 1;
+              showSlides(slideIndex);
+              //Next/previous controls
+              function plusSlides(n) {
+                showSlides((slideIndex += n));
+              }
+              function currentSlide(n) {
+                showSlides((slideIndex = n));
+              }
+              function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("slideimg");
+                let dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {
+                  slideIndex = 1;
+                }
+                if (n < 1) {
+                  slideIndex = slides.length;
+                }
+                for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+              }
+            </script>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

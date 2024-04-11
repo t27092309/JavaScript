@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Hoa don</h1>
+      <div class="products">
+        <span id="iphone" data-name="iphone14" data-price="1000">iPhone 14 - 1000$</span>
+        <input type="number" id="soluongiphone" value="0"/>
+      </div>
+      <div class="products">
+        <span id="macbook" data-name="mac" data-price="1500">Mac - 1500$</span>
+        <input type="number" id="soluongmac" value="0" />
+      </div>
+      <div class="products">
+        <span id="ipad" data-name="ipad" data-price="2000">iPad - 2000$</span>
+        <input type="number" id="soluongipad" value="0" />
+      </div>
+    </div>
+    <button type="button" onclick="handleCheckout()">In hoa don</button>
+    <div>
+        Check out
+        <ul id="checkoutList"></ul>
+    </div>
+
+    <script>
+        function handleCheckout(){
+            const sliphoneElement = document.getElementById("iphone");
+            const sliphone = Number(iphone.value);
+
+            const slmacbookElement = document.getElementById("macbook");
+            const slmacbook = Number(macbook.value);
+
+            const slipadElement = document.getElementById("ipad");
+            const slipad = Number(ipad.value);
+
+            const checkoutList = document.getElementById("checkoutList");
+
+            if(sliphone > 0){
+                const iphoneElement = document.getElementById("iphone");
+                const name = iphoneElement.getAttribute("data-name");
+                const price = iphoneElement.getAttribute("data-price"); 
+             
+                const li = document.createElement("li");
+                li.innerText = name + " - " + price + " - " + sliphone + " - " + (price*sliphone);
+            }
+        }
+    </script>
+  </body>
+</html>

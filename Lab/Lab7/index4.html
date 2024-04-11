@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .stars ul {
+        list-style: none;
+        padding: 0px;
+      }
+      .star {
+        font-size: large;
+        color: #ddd;
+        display: inline-block;
+      }
+      .orange {
+        color: orange;
+      }
+      .output {
+        background-color: #ddd;
+      }
+    </style>
+
+    <div id="container">
+      <ul class="stars">
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+        <li class="star">&#10029;</li>
+      </ul>
+      <div class="output"></div>
+    </div>
+    <script>
+      const starsUL = document.querySelector(".stars");
+      const output = document.querySelector(".output");
+
+      const stars = document.querySelector(".star");
+      stars.foreach((star, index) => {
+        star.starValue = index + 1;
+        star.addEventListener("click", starRate);
+      });
+      function starRate(e) {
+        output.innerHTML = `You rated this ${e.target.starValue} stars`;
+        stars.foreach((star, index) => {
+          if (index < e.target.starValue) {
+            star.classList.add("orange");
+          } else {
+            star.classList.remove("orange");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

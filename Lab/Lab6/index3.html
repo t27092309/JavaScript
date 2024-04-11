@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      #container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .button {
+        margin-top: 20px;
+      }
+    </style>
+
+    <div id="container">
+      <img src="IMG/img1.jpg" alt="" style="width: 500px; height: 500px" />
+      <div class="button">
+        <button onclick="prev()">Previous</button>
+        <button onclick="next()">Next</button>
+        <button onclick="first()">First</button>
+        <button onclick="last()">Last</button>
+        <button onclick="play()">Play</button>
+        <button onclick="pause()">Pause</button>
+      </div>
+    </div>
+    <script>
+      var photos = [
+        "IMG/img1.jpg",
+        "IMG/img2.jpg",
+        "IMG/img3.jpg",
+        "IMG/img4.jpg",
+        "img/img5.jpg",
+      ];
+      imgTag = document.querySelector("img");
+      let count = 0;
+      let autoPlay = false;
+      function next() {
+        count++;
+        if (count >= photos.length) {
+          count = 0;
+          imgTag.src = photos[count];
+        } else {
+          imgTag.src = photos[count];
+        }
+      }
+
+      function prev() {
+        count--;
+        if (count < 0) {
+          count = photos.length - 1;
+          imgTag.src = photos[count];
+        } else {
+          imgTag.src = photos[count];
+        }
+      }
+
+      function first() {
+        count = 0;
+        imgTag.src = photos[count];
+      }
+
+      function last() {
+        count = photos.length - 1;
+        imgTag.src = photos[count];
+      }
+
+      setInterval(function(){
+        if(autoPlay){
+          next();
+        }
+      },1000);
+
+      function play(){
+        autoPlay = true;
+      }
+
+      function pause(){
+        autoPlay = false;
+      }
+    </script>
+  </body>
+</html>

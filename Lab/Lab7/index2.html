@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      div {
+        background-color: aqua;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        position: absolute;
+      }
+    </style>
+    <button onclick="goRight()">Go right</button>
+    <div id="block"></div>
+
+    <script>
+      function goRight() {
+        let b = document.getElementById("block");
+        let x = 0;
+        setInterval(function () {
+          if (x === 600) {
+            clearInterval();
+          } else {
+            x++;
+            b.style.left = x + "px";
+          }
+        }, 2);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border: 1px solid black;
+      }
+    </style>
+
+    <div class="box" ondrop="dragDrop()" ondragover="dragOver()">
+      1
+      <div id="dragme" draggable="true" ondragstart="dragStart()">Drag me!</div>
+    </div>
+    <div class="box" ondrop="dragDrop()" ondragover="dragOver()">2</div>
+
+    <script>
+      let holderItem;
+      function dragStart() {
+        holderItem = event.target;
+      }
+      function dragOver() {
+        event.preventDefault();
+      }
+      function dragDrop() {
+        event.preventDefault();
+        if (event.target.className == "box") {
+          event.target.appendChild(holderItem);
+        }
+      }
+    </script>
+  </body>
+</html>

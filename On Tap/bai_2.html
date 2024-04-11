@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+         .container {
+            width: 1000px;
+            margin: 0 auto;
+            background-color: whitesmoke;
+            padding: 20px;
+            font-size: 32px;
+        }
+
+        input {
+            font-size: 32px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .title {
+            min-width: 400px;
+        }
+
+        .product_list {
+            display:  flex;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="products">
+            <h1>Hoa don</h1>
+            <form >
+                <div class="product_list">
+                    <div class="title">
+                          Email
+                    </div>
+                    <input type="email" id="email">
+                </div>
+                <div class="product_list">
+                    <div class="title">Iphone 14 promax - 1000$</div>
+                    <input type="number" id="iphone_soluong" value="1">
+                </div>
+                <div class="product_list">
+                    <div class="title">Macbook pro - 2000$</div>
+                    <input type="number" id="macbook_soluong" value="1">
+                </div>
+                <div class="product_list">
+                    <div class="title">Ipad pro - 1500$</div>
+                    <input type="number" id="ipad_soluong" value="1">
+                </div>
+                <button type="button" onclick="handleCheckout()">In ra hoa don</button>
+            </form>
+        </div>
+
+        <div>
+            Checkout
+            <div id="checkout_email"></div>
+            <ul id="checkout_list"></ul>
+            <div id="total_price"></div>
+        </div>
+        
+    </div>
+
+    <script>
+
+        let totalPrice = 0
+
+        function handleCheckout() {
+            const iphoneSoLuongElement = document.getElementById('iphone_soluong')
+            const iphoneSoLuong = Number(iphoneSoLuongElement.value)
+
+            const macbookSoLuongElement = document.getElementById('macbook_soluong')
+            const macbookSoLuong = Number(macbookSoLuongElement.value)
+
+            const ipadSoluongElement = document.getElementById('ipad_soluong')
+            const ipadSoLuong = Number(ipadSoluongElement.value)
+
+            const checkoutList = document.getElementById('checkout_list')
+            const totalPriceElement = document.getElementById('total_price')
+
+            const emailElement = document.getElementById('email')
+            const checkoutEmail = document.getElementById('checkout_email')
+
+            const email = emailElement.value
+
+            // xoa checkout list cu
+            checkoutList.innerText = ""
+            // xoa tong tien cu
+            totalPriceElement.innerText = 0
+
+            if(!email) {
+                alert('Hay nhap email')
+                return
+            }
+            // kiem tra xem email co @ hay khong
+            if(!email.includes('@')) {
+                alert("Email khong dung dinh dang phai co @")
+                return
+            }
+            // hien thi email
+            checkoutEmail.innerText = "Email: " + email
+
+            // so luong iphone lon hon 0 vi vay no nam trong hoa don
+            if(iphoneSoLuong > 0) {
+                const li = document.createElement('li')
+                li.innerText = 'Iphone 14 promax ' + ' - $' + 1000 + ' x ' + iphoneSoLuong
+                // tinh tong tien  = tong hien hien tai + ( gia tien sanr pham * so luong)
+                totalPrice = totalPrice + ( 1000 * iphoneSoLuong)
+                checkoutList.appendChild(li)
+            }
+            // 
+            if(macbookSoLuong > 0) {
+                const li = document.createElement('li')
+                li.innerText = 'Macbook pro ' + ' - $' + 2000 + ' x ' + macbookSoLuong
+                totalPrice = totalPrice + ( 2000 * macbookSoLuong)
+                checkoutList.appendChild(li)
+            }
+            // 
+            if(ipadSoLuong > 0 ) {
+                const li = document.createElement('li')
+                li.innerText = 'Ipad pro ' + ' - $' + 1500 + ' x ' + ipadSoLuong
+
+                totalPrice = totalPrice + ( 1500 * ipadSoLuong)
+
+                checkoutList.appendChild(li)
+            }
+            // hien thi tong tien
+            totalPriceElement.innerText = 'Tong so tien: $' + totalPrice
+        }
+    </script>
+</body>
+</html>

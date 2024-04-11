@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Example</title>
+  <style>
+      input {
+          padding: 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          width: 70%;
+      }
+
+      button {
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          cursor: pointer;
+          width: 40%;
+      }
+
+      button:hover {
+          background-color: #ddd;
+      }
+
+      .container {
+          width: 50%;
+          height: 90vh;
+          overflow-y:auto;
+          margin: auto;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          padding: 20px;
+      }
+
+      .box {
+          text-align: start;
+      }
+
+      label {
+          margin-bottom: 10px;
+      }
+
+      #userList {
+          list-style-type: none;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+      p {
+          margin: 0;
+      }
+      .in-valid {
+          color: red;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Enter Name and Age</h2>
+  <div class="box">
+    <form id="userForm">
+    <!--        Input name-->
+      <p >Name:</p>
+      <input type="text" id="name" name="name">
+      <p id="nameFeedback" style="height: 20px" class="in-valid"></p>
+
+    <!--        Input age-->
+      <p>Age:</p>
+      <input type="number" id="age" name="age">
+      <p style="height: 20px" class="in-valid"></p>
+
+    <!--        Input gender-->
+      <p>Gender:</p>
+      <input type="text" id="gender" name="gender">
+      <p id="genderFeedback" style="height: 20px" class="in-valid"></p>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <br>
+    <h2>Users</h2>
+    <ul id="userList"></ul>
+  </div>
+</div>
+
+<script>
+  function submitForm() {
+    // Lấy giá trị từ form
+    const nameElement = document.getElementById("name");
+    const ageElement = document.getElementById("age");
+    const genderElement = document.getElementById("gender");
+
+    const name = nameElement.value;
+    const age = ageElement.value;
+    const gender = genderElement.value;
+
+    const nameFeedback = document.getElementById("nameFeedback");
+    const ageFeedback = ageElement.nextElementSibling;
+    const genderFeedback = document.getElementById("genderFeedback");
+
+    // Xóa feedback cũ
+    nameFeedback.innerHTML = "";
+    ageFeedback.innerHTML = "";
+    genderFeedback.innerHTML = "";
+
+
+    if (!name) {
+      console.log(nameFeedback);
+      nameFeedback.innerHTML = "Name is required";
+      // dừng hàm
+      return;
+    }
+    if (!age) {
+      ageFeedback.innerHTML = "Age is required";
+      // dừng hàm
+      return;
+    }
+    if (!gender) {
+      genderFeedback.innerHTML = "Gender is required";
+      // dừng hàm
+      return;
+    }
+
+    // Kiểm tra xem tên và tuổi có được nhập không
+    // Tạo một mục danh sách mới
+    const listItem = document.createElement("li");
+    listItem.innerText = "Name: " + name + ", Age: " + age + ", Gender: " + gender;
+
+    // Thêm mục danh sách vào danh sách hiện có
+    const userList = document.getElementById("userList");
+    userList.appendChild(listItem);
+
+    // Xóa nội dung form sau khi submit
+    nameElement.value = "";
+    ageElement.value = "";
+    genderElement.value = "";
+  }
+</script>
+</body>
+</html>
